@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.nsr.microwave.MicrowaveFragment">
+    <data>
+        <variable
+            name="mwViewModel"
+            type="com.nsr.microwave.MicrowaveViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/screen_margin">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/purple_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_time_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:hint="00:00:00"
+                android:textColor="@color/black"
+                android:textSize="36sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_timer"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:text="timer"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/label_mute"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_mute"
+                android:layout_width="92dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:text="mute"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/label_help"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/label_timer" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:text="help"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:layout_marginEnd="@dimen/labels_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/label_cook"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_cook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:text="cook"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TableLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/sensor_cooking_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sensor_cooking"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginBottom="@dimen/labels_padding" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_popcorn"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/popcorn" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_beverage"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/beverage" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_potato"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/potato" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_vegetable"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/vegetable" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_myplate"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/my_plate" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_reheat"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/reheat" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_defrost"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/defrost" />
+
+            </TableRow>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/express_cook"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginBottom="@dimen/labels_padding"
+                android:layout_marginStart="@dimen/labels_start_margin" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_one"
+                    style="@style/NumericButtons"
+                    android:text="@string/one"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_two"
+                    style="@style/NumericButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}"
+                    android:text="@string/two" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_three"
+                    style="@style/NumericButtons"
+                    android:text="@string/three"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_add_30_sec"
+                    style="@style/TextButtons"
+                    android:onClick="@{() -> mwViewModel.add30Secs()}"
+                    android:text="@string/add_30_sec" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_four"
+                    style="@style/NumericButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}"
+                    android:text="@string/four" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_five"
+                    style="@style/NumericButtons"
+                    android:text="@string/five"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_six"
+                    style="@style/NumericButtons"
+                    android:text="@string/six"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_timer_on_off"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/timer_on_off" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_seven"
+                    style="@style/NumericButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/seven" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_eight"
+                    style="@style/NumericButtons"
+                    android:text="@string/eight"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_nine"
+                    style="@style/NumericButtons"
+                    android:text="@string/nine"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_cook_time"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/cook_time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/power_level"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/power_level" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_zero"
+                    style="@style/NumericButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.handleNumberSelection(view)}"
+                    android:text="@string/zero" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_set_clock"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:text="@string/set_clock"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_help"
+                    style="@style/TextButtons"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/help" />
+            </TableRow>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clock_display"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/labels_start_margin" />
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="6dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_cancel_off"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}"
+                    android:text="@string/cancel_off" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_start_pause"
+                    style="@style/TextButtons"
+                    android:layout_marginEnd="2dp"
+                    android:onClick="@{() -> mwViewModel.startOrPauseCooking()}"
+                    android:text="@string/start_pause" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_sound"
+                    style="@style/TextButtons"
+                    android:text="@string/sound"
+                    android:onClick="@{(view) -> mwViewModel.updateTimer(view)}" />
+            </TableRow>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

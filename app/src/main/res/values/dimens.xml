@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="screen_margin">20dp</dimen>
+    <dimen name="labels_start_margin">50dp</dimen>
+    <dimen name="labels_padding">8dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+
+</resources>
